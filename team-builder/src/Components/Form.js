@@ -11,8 +11,28 @@ export default function Form(props) {
     return false;
   };
 
+  const StyledForm = styled.form`
+    background: #CCCCCC;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 1rem;
+    label {
+        padding: 0.5rem;
+    }
+    input {
+        display: block;
+        margin-left: 10px;
+        height: 2rem;
+    }
+    button {
+        margin: 0 auto;
+    }
+  `;
+
   return (
-    <form>
+    <StyledForm>
       <label>
         Name
         <input value={name} type="text" onChange={onNameChange} />
@@ -28,6 +48,6 @@ export default function Form(props) {
       <button disabled={isDisabled()} onClick={onSubmitForm}>
         Add Developer
       </button>
-    </form>
+    </StyledForm>
   );
 }

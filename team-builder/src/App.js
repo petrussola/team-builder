@@ -3,6 +3,7 @@ import './App.css';
 import uuid from 'uuid';
 import Form from './Components/Form';
 import List from './Components/List';
+import styled from 'styled-components';
 
 const initialPersonList = [
   {id: uuid(), name: 'Brad Pitt', email: 'brad@pitt.com', position: 'intern'},
@@ -50,17 +51,27 @@ function App() {
     setPersonList(personList.concat({...personForm, id: uuid()}))
   }
 
+  const StyledDiv = styled.div`
+    width: 75vw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  `;
+
   return (
-    <div className="App">
+    <StyledDiv className="App">
       <Form 
+        className="form"
         onNameChange={onNameChange}
         onEmailChange={onEmailChange}
         onPositionChange={onPositionChange}
         onSubmitForm={onSubmitForm}
         personForm={personForm}
       />
-      <List personList={personList} />
-    </div>
+      <List className="person-card" personList={personList} />
+    </StyledDiv>
   );
 }
 

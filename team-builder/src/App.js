@@ -47,12 +47,7 @@ function App() {
 
   const onSubmitForm = e => {
     e.preventDefault();
-    setPersonList(personList.concat({
-      id: uuid(),
-      name: personForm.name,
-      email: personForm.email,
-      position: personForm.position,
-    }))
+    setPersonList(personList.concat({...personForm, id: uuid()}))
   }
 
   return (

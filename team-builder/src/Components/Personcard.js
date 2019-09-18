@@ -20,6 +20,7 @@ export default function PersonCard(props) {
       <p>{email}</p>
       <p>{position}</p>
       <p>{id}</p>
+      <button>Edit</button>
     </StyledDiv>
   );
 }

@@ -19,7 +19,7 @@ export default function Form(props) {
       </label>
       <label>
         Email
-        <input value={email} type="text" onChange={onEmailChange} />
+        <input value={email} type="email" onChange={onEmailChange} />
       </label>
       <label>
         Position

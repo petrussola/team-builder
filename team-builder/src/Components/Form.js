@@ -2,8 +2,14 @@ import React from "react";
 import styled from "styled-components";
 
 export default function Form(props) {
-    const {onNameChange, onEmailChange, onPositionChange, onSubmitForm} = props;
-    const {name, email, position} = props.personForm;
+  const { onNameChange, onEmailChange, onPositionChange, onSubmitForm } = props;
+  const { name, email, position } = props.personForm;
+  const isDisabled = () => {
+    if (!name || !email || !position) {
+      return true;
+    }
+    return false;
+  };
 
   return (
     <form>
@@ -13,13 +19,15 @@ export default function Form(props) {
       </label>
       <label>
         Email
-        <input value={email} type="text" onChange={onEmailChange}/>
+        <input value={email} type="text" onChange={onEmailChange} />
       </label>
       <label>
         Position
-        <input value={position} type="text" onChange={onPositionChange}/>
+        <input value={position} type="text" onChange={onPositionChange} />
       </label>
-      <button onClick={onSubmitForm}>Add Developer</button>
+      <button disabled={isDisabled()} onClick={onSubmitForm}>
+        Add Developer
+      </button>
     </form>
   );
 }

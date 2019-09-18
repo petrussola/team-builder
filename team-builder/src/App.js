@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import uuid from "uuid";
 import Form from "./Components/Form";
@@ -40,6 +40,10 @@ function App() {
   const [personList, setPersonList] = useState(initialPersonList);
   const [personForm, setPersonForm] = useState(initialPersonForm);
 
+  // STATE FOR PERSON BEING EDITED AND ITS SETTER
+
+  const [memberToEdit, setMemberToEdit] = useState(initialPersonForm);
+
   const onNameChange = e => {
     setPersonForm({
       name: e.target.value,
@@ -69,6 +73,17 @@ function App() {
     setPersonList(personList.concat({ ...personForm, id: uuid() }));
   };
 
+  // SETTER TO MEMBER BEING EDITED
+
+  const editMember = (e, person) => {
+    e.preventDefault();
+    setMemberToEdit(person);
+  };
+
+  useEffect( () => {
+    setPersonForm(memberToEdit)
+  }, [memberToEdit])
+
   return (
     <StyledDiv className="App">
       <Form
@@ -79,7 +94,11 @@ function App() {
         onSubmitForm={onSubmitForm}
         personForm={personForm}
       />
-      <List className="person-card" personList={personList} />
+      <List
+        className="person-card"
+        personList={personList}
+        editMember={editMember}
+      />
     </StyledDiv>
   );
 }

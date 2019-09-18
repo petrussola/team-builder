@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export default function PersonCard(props) {
   const { name, email, position, id } = props.person;
+  const { editMember } = props;
 
   const StyledDiv = styled.div`
     border: 1px dashed #cccccc;
@@ -20,7 +21,7 @@ export default function PersonCard(props) {
       <p>{email}</p>
       <p>{position}</p>
       <p>{id}</p>
-      <button>Edit</button>
+      <button onClick={e => editMember(e, props.person)}>Edit</button>
     </StyledDiv>
   );
 }

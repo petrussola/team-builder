@@ -22,7 +22,6 @@ function App() {
   const [personForm, setPersonForm] = useState(initialPersonForm);
 
   const onNameChange = e => {
-    e.preventDefault();
     setPersonForm({
       name: e.target.value,
       email: personForm.email,
@@ -31,7 +30,6 @@ function App() {
   }
   
   const onEmailChange = e => {
-    e.preventDefault();
     setPersonForm({
       name: personForm.name,
       email: e.target.value,
@@ -40,12 +38,16 @@ function App() {
   }
   
   const onPositionChange = e => {
-    e.preventDefault();
     setPersonForm({
       name: personForm.name,
       email: personForm.email,
       position: e.target.value,
     })
+  }
+
+  const onSubmitForm = e => {
+    e.preventDefault();
+    setPersonList(personList.concat(personForm))
   }
 
   return (
@@ -54,6 +56,8 @@ function App() {
         onNameChange={onNameChange}
         onEmailChange={onEmailChange}
         onPositionChange={onPositionChange}
+        onSubmitForm={onSubmitForm}
+        personForm={personForm}
       />
       <List personList={personList} />
     </div>

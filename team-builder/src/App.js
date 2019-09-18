@@ -21,9 +21,40 @@ function App() {
   const [personList, setPersonList] = useState(initialPersonList);
   const [personForm, setPersonForm] = useState(initialPersonForm);
 
+  const onNameChange = e => {
+    e.preventDefault();
+    setPersonForm({
+      name: e.target.value,
+      email: personForm.email,
+      position: personForm.position,
+    })
+  }
+  
+  const onEmailChange = e => {
+    e.preventDefault();
+    setPersonForm({
+      name: personForm.name,
+      email: e.target.value,
+      position: personForm.position,
+    })
+  }
+  
+  const onPositionChange = e => {
+    e.preventDefault();
+    setPersonForm({
+      name: personForm.name,
+      email: personForm.email,
+      position: e.target.value,
+    })
+  }
+
   return (
     <div className="App">
-      <Form />
+      <Form 
+        onNameChange={onNameChange}
+        onEmailChange={onEmailChange}
+        onPositionChange={onPositionChange}
+      />
       <List personList={personList} />
     </div>
   );

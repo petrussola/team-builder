@@ -75,7 +75,7 @@ function App() {
 
   // SETTER TO MEMBER BEING EDITED
 
-  const editMember = (e, person) => {
+  const editSelectedMember = (e, person) => {
     e.preventDefault();
     setMemberToEdit(person);
   };
@@ -83,6 +83,8 @@ function App() {
   useEffect( () => {
     setPersonForm(memberToEdit)
   }, [memberToEdit])
+
+  // EDIT MEMBER
 
   return (
     <StyledDiv className="App">
@@ -97,7 +99,7 @@ function App() {
       <List
         className="person-card"
         personList={personList}
-        editMember={editMember}
+        editSelectedMember={editSelectedMember}
       />
     </StyledDiv>
   );

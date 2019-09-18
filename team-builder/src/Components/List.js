@@ -6,7 +6,7 @@ export default function List (props) {
         <div>This is the list:
             {
                 personList.map( person => (
-                    <div>{`${person.name}, ${person.email}, ${person.position}`}</div>
+                    <div>{`${person.name}, ${person.email}, ${person.position} with id of ${person.id}`}</div>
                 ))
             }
         </div>
